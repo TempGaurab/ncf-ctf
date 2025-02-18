@@ -1,47 +1,90 @@
-function submitFlag(challenge) {
-    const input = document.querySelector(`[data-challenge="${challenge}"]`);
-    const flag = input.value.trim();
-    const button = input.nextElementSibling;
-    const completionMessage = document.getElementById('completion-message');
+// Define your custom math problems dynamically
+let score = 0;
+let questionsCompleted = 0;
+let currentQuestionIndex = 0;
 
-    // Add loading state
-    button.disabled = true;
-    button.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        Checking...
-    `;
+// Function to get letter position in the alphabet
+function getLetterPosition(letter) {
+  return letter.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0) + 1;
+}
 
-    // Simulate network delay
-    setTimeout(() => {
-        if (checkFlag(challenge, flag)) {
-            showNotification('success', '🎉 Congratulations! You found the correct flag!');
-            input.classList.add('success');
-            input.disabled = true;
-            updateProgress(challenge);
-            
-            // Success button state
-            button.innerHTML = `
-                <svg class="w-6 h-6 text-white inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Challenge Completed!
-            `;
-            button.classList.add('bg-green-500');
-            
-            // Show completion message
-            completionMessage.classList.remove('hidden');
-            completionMessage.classList.add('animate-fadeIn');
-        } else {
-            showNotification('error', '❌ That\'s not the correct flag. Keep trying!');
-            input.classList.add('error');
-            setTimeout(() => input.classList.remove('error'), 1000);
-            
-            // Reset button
-            button.disabled = false;
-            button.innerHTML = 'Submit Flag';
-        }
-    }, 1000);
-} 
+// Math problems with dynamically calculated answers
+const mathProblems = [
+  { question: "If a = 1, b = 2, What number is c?", formula: "c = a + b" },
+  { question: "What number is 'l'?", formula: "l" },
+  { question: "What number is 'a'?", formula: "a" },
+  { question: "What number is 'i'?", formula: "i" },
+  { question: "What number is 'm'?", formula: "m" },
+  { question: "What is the sum of the letter positions for the word 'claim'?", formula: "claim" }
+];
+
+// Function to calculate the answer based on the formula
+function calculateAnswer(formula) {
+  if (formula === "claim") {
+    // Sum letter positions for the word 'claim'
+    return ['c', 'l', 'a', 'i', 'm'].reduce((sum, letter) => sum + getLetterPosition(letter), 0);
+  } else {
+    // Calculate the letter position for a single letter (like 'a', 'i', 'l', etc.)
+    return getLetterPosition(formula);
+  }
+}
+
+// Update the logic to display the current question
+function displayMathProblem() {
+  // Check if all questions are completed
+  if (questionsCompleted === 6) {
+    document.getElementById('math-question').textContent = "All questions completed!";
+    document.getElementById('answer').disabled = true;
+    document.getElementById('submit-button').disabled = true;
+    document.getElementById('completion-message').classList.remove('hidden');
+    update_point();
+    return;
+  }
+
+  const problem = mathProblems[currentQuestionIndex];
+  document.getElementById('math-question').innerHTML = `${problem.question} = ?`;
+  document.getElementById('answer').value = '';
+  document.getElementById('completion-message').classList.add('hidden');
+}
+
+// Check the user's answer
+function checkAnswer() {
+  const userAnswer = parseInt(document.getElementById('answer').value);
+  const correctAnswer = calculateAnswer(mathProblems[currentQuestionIndex].formula);
+
+  if (userAnswer === correctAnswer) {
+    // Increase counter for completed questions
+    questionsCompleted++;
+
+    // Check if all questions are completed
+    if (questionsCompleted === 6) {
+      score++; // Add one point after all questions
+      document.getElementById('completion-message').textContent = "Write down this number in the fifth box provided to you.";
+      displayMathProblem(); // This will show the completion state
+    } else {
+      // Show intermediate success message
+      document.getElementById('completion-message').textContent = `Correct! Moving to question ${currentQuestionIndex + 2}/6`;
+      document.getElementById('completion-message').classList.remove('hidden');
+      
+      // Move to the next question after a short delay
+      setTimeout(() => {
+        currentQuestionIndex++;
+        displayMathProblem();
+      }, 100);
+    }
+  } else {
+    alert('Incorrect. Try again!');
+  }
+}
+
+// Initialize the page with the first math problem
+document.addEventListener('DOMContentLoaded', () => {
+  displayMathProblem();
+});
+
+// Allow Enter key to submit answer
+document.getElementById('answer').addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    checkAnswer();
+  }
+});
