@@ -111,7 +111,7 @@ function showFinalCompletion() {
                     <h4 class="text-green-400 font-bold">Quiz Completed!</h4>
                     <p class="text-gray-300 text-sm">
                         Congratulations! You've completed all questions about NKU's health resources.
-                        Please write down "Healthy" in the second blank.
+                        Please write down "Healthy" in the second blank provided to you.
                     </p>
                 </div>
             </div>
