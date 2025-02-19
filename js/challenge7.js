@@ -112,3 +112,29 @@ function toggleHint() {
   const hint = document.getElementById("hint");
   hint.classList.toggle("hidden");
 }
+
+const alphabet = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
+
+const keyboardContainer = document.getElementById("keyboard");
+alphabet.forEach((letter) => {
+  const button = document.createElement("button");
+  button.textContent = letter;
+  button.className =
+    "w-12 h-12 bg-gray-700 text-white text-lg font-bold rounded focus:outline-none hover:bg-gray-600 active:bg-gray-500 transition-colors duration-300";
+  button.addEventListener("click", () => handleKeyPress(letter));
+  keyboardContainer.appendChild(button);
+});
+
+function handleKeyPress(letter) {
+  if (gameOver || currentCol >= GRID_COLS) return;
+
+  currentGuess.push(letter);
+  updateGrid();
+  currentCol++;
+}
+
+function handleSubmit() {
+  if (currentCol === GRID_COLS) {
+    checkGuess();
+  }
+}

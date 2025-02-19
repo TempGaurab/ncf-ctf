@@ -18,6 +18,72 @@
         background-color: #374151;
         border-color: #374151;
       }
+      /* Keyboard container */
+      #keyboard {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 4px;
+        margin-top: 16px;
+      }
+
+      /* Make the buttons smaller on mobile devices */
+      #keyboard button {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        padding: 0;
+      }
+
+      /* Adjust the grid for smaller screens */
+      @media (max-width: 640px) {
+        #keyboard {
+          grid-template-columns: repeat(10, 1fr);
+        }
+
+        #keyboard button {
+          width: 28px;
+          height: 28px;
+          font-size: 12px;
+        }
+      }
+
+      /* For very small screens (like on phones in portrait mode) */
+      @media (max-width: 375px) {
+        #keyboard {
+          grid-template-columns: repeat(10, 1fr);
+        }
+
+        #keyboard button {
+          width: 24px;
+          height: 24px;
+          font-size: 10px;
+        }
+      }
+
+      #submit-btn {
+        width: 120px;
+        height: 40px;
+        font-size: 16px;
+        margin-top: 16px;
+      }
+
+      /* Adjust the button for smaller screens */
+      @media (max-width: 640px) {
+        #submit-btn {
+          width: 100px;
+          height: 35px;
+          font-size: 14px;
+        }
+      }
+
+      /* For very small screens (like on phones in portrait mode) */
+      @media (max-width: 375px) {
+        #submit-btn {
+          width: 80px;
+          height: 30px;
+          font-size: 12px;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
@@ -113,6 +179,18 @@
               <p class="text-gray-300">This word travel in waves.</p>
             </div>
           </div>
+        </div>
+        <div id="keyboard" class="mt-4 grid grid-cols-10 gap-2">
+          <!-- Dynamically created buttons for each letter -->
+        </div>
+        <div class="mt-4 flex justify-center">
+          <button
+            id="submit-btn"
+            class="w-32 h-12 bg-green-400 text-white text-lg font-bold rounded focus:outline-none hover:bg-green-500 active:bg-green-400 transition-colors duration-300"
+            onclick="handleSubmit()"
+          >
+            Submit
+          </button>
         </div>
 
         <!-- Completion Message -->
