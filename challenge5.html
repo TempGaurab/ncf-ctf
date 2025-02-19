@@ -41,6 +41,21 @@
 
     <main class="container mx-auto px-4 py-12">
       <div class="max-w-xl mx-auto bg-gray-800 p-8 rounded-xl shadow-lg">
+        <!-- Progress Bar -->
+        <div class="mb-8">
+          <div class="flex justify-between text-sm text-gray-400 mb-2">
+            <span>Progress</span>
+            <span id="progress-text">1/6 Questions</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div
+              id="progress-bar"
+              class="bg-gradient-to-r from-green-400 to-blue-500 h-2.5 rounded-full transition-all duration-500"
+              style="width: 16.67%"
+            ></div>
+          </div>
+        </div>
+
         <h2 class="text-3xl font-bold text-center text-green-400 mb-6">
           Solve the Math Challenge!
         </h2>
@@ -50,6 +65,56 @@
 
         <div class="text-center text-xl font-semibold text-white mb-4">
           <span id="math-question">12 + 8 = ?</span>
+        </div>
+
+        <!-- Hint Section -->
+        <div class="mb-8">
+          <button
+            onclick="toggleHint()"
+            class="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors duration-300 mb-4 mx-auto"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span class="font-medium">Need a hint?</span>
+          </button>
+
+          <div
+            id="hint"
+            class="hidden transform transition-all duration-300 ease-in-out"
+          >
+            <div class="bg-gray-700/50 p-6 rounded-lg">
+              <div class="flex items-center space-x-3 mb-3">
+                <svg
+                  class="w-5 h-5 text-green-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-green-400 font-medium">Hint</span>
+              </div>
+              <p id="hint-text" class="text-gray-300">
+                Remember that 'a' is position 1 in the alphabet!
+              </p>
+            </div>
+          </div>
         </div>
 
         <input
@@ -75,6 +140,6 @@
         </div>
       </div>
     </main>
-    <script src="js\challenge5.js"></script>
+    <script src="js/challenge5.js"></script>
   </body>
 </html>

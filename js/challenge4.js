@@ -39,7 +39,7 @@ function checkBioAnswer() {
     // If correct, update score and show completion message
     score++;
     questionCompleted = true;
-    document.getElementById('completion-message').textContent = "Correct! You've completed the question. Write down the answer in the fourth box provided!";
+    document.getElementById('completion-message').textContent = "Correct! You've completed the question. Write down the answer(AB+) in the fourth box provided!";
     document.getElementById('completion-message').classList.remove('hidden');
   } else {
     alert('Incorrect. Try again!');
