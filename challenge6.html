@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Challenge 6: Base64 Decoder</title>
+    <title>Challenge 3: Detective's Case Files</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="../css/style.css" rel="stylesheet" />
   </head>
@@ -14,7 +14,7 @@
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <svg
-            class="w-8 h-8 text-green-400"
+            class="w-8 h-8 text-red-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -23,18 +23,18 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
           <h1
-            class="text-2xl font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent"
+            class="text-2xl font-bold bg-gradient-to-r from-red-500 to-amber-500 bg-clip-text text-transparent"
           >
-            Challenge 6: Base64 Decoder
+            Challenge 3: Cold Case Files
           </h1>
         </div>
         <a
           href="https://tempgaurab.github.io/ncf-ctf/"
-          class="text-green-400 hover:text-green-300 flex items-center space-x-2 transition-colors duration-300"
+          class="text-red-500 hover:text-red-400 flex items-center space-x-2 transition-colors duration-300"
         >
           <svg
             class="w-5 h-5"
@@ -60,68 +60,52 @@
         <div class="text-center mb-12">
           <h2 class="text-4xl font-extrabold mb-4 relative inline-block">
             <span
-              class="absolute top-0 left-0 -z-10 text-blue-500/10 blur-sm transform -translate-x-0.5 translate-y-0.5"
-              >Decode the Secret</span
+              class="absolute top-0 left-0 -z-10 text-red-500/10 blur-sm transform -translate-x-0.5 translate-y-0.5"
             >
+              Detective's Desk
+            </span>
             <span
-              class="bg-gradient-to-r from-green-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent"
-              >Decode the Secret</span
+              class="bg-gradient-to-r from-red-500 via-amber-500 to-red-600 bg-clip-text text-transparent"
             >
+              Detective's Desk
+            </span>
           </h2>
           <p class="text-gray-400 text-lg">
-            Time to put your decoding skills to the test. Can you crack this
-            Base64 message?
+            Solve the mysteries and crack the case
           </p>
         </div>
 
-        <!-- Challenge Content -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-gray-400" id="progress-text"
+              >Case File 1 of 4</span
+            >
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div
+              id="progress-bar-fill"
+              class="bg-red-500 h-2.5 rounded-full transition-all duration-500"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Case File Content -->
         <div
           class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-8 shadow-xl border border-gray-700"
         >
           <div class="mb-8">
-            <h3 class="text-2xl font-bold text-green-400 mb-4">Instructions</h3>
-            <p class="text-gray-300 leading-relaxed">
-              The flag has been encoded using Base64. Can you decode it and
-              reveal the hidden message?
+            <h3 class="text-2xl font-bold text-red-500 mb-4">Case Evidence</h3>
+            <p class="text-gray-300 leading-relaxed" id="case-question">
+              Loading case file...
             </p>
           </div>
 
-          <!-- Encoded Message Section -->
-          <div class="bg-gray-700/50 p-6 rounded-lg mb-8">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-green-400 font-medium">Encoded Message:</span>
-              <button
-                onclick="copyToClipboard('TkNGe2I0czY0X2QzYzBkM3J9')"
-                class="text-gray-400 hover:text-green-400 transition-colors duration-300 flex items-center space-x-1"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-                  />
-                </svg>
-                <span>Copy</span>
-              </button>
-            </div>
-            <p
-              class="font-mono text-lg text-gray-300 bg-gray-800/50 p-4 rounded-lg"
-            >
-              TkNGe2I0czY0X2QzYzBkM3J9
-            </p>
-          </div>
-
-          <!-- Hint Box -->
+          <!-- Case Notes -->
           <div class="mb-8">
             <button
               onclick="toggleHint()"
-              class="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors duration-300 mb-4"
+              class="flex items-center space-x-2 text-amber-500 hover:text-amber-400 transition-colors duration-300 mb-4"
             >
               <svg
                 class="w-5 h-5"
@@ -136,17 +120,19 @@
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span class="font-medium">Need a hint?</span>
+              <span class="font-medium">Case Notes</span>
             </button>
 
             <div
               id="hint"
               class="hidden transform transition-all duration-300 ease-in-out"
             >
-              <div class="bg-gray-700/50 p-6 rounded-lg">
+              <div
+                class="bg-gray-700/50 p-6 rounded-lg border-l-4 border-amber-500"
+              >
                 <div class="flex items-center space-x-3 mb-3">
                   <svg
-                    class="w-5 h-5 text-green-400"
+                    class="w-5 h-5 text-amber-500"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -158,56 +144,41 @@
                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <span class="text-green-400 font-medium">Hint</span>
+                  <span class="text-amber-500 font-medium"
+                    >Detective's Notes</span
+                  >
                 </div>
-                <p class="text-gray-300">
-                  Try using an online Base64 decoder. Look for tools that can
-                  convert Base64 to plain text!
+                <p class="text-gray-300" id="hint-text">
+                  Examining the evidence...
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- Input Section -->
+          <!-- Investigation Input -->
           <div class="space-y-6">
             <div class="relative">
               <input
                 type="text"
-                class="w-full bg-gray-700/50 border border-gray-600 text-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-green-400 font-mono"
-                placeholder="NCF{base64_flag}"
-                data-challenge="challenge6"
+                id="case-answer"
+                class="w-full bg-gray-700/50 border border-gray-600 text-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-red-500 font-mono"
+                placeholder="Enter your deduction"
+                data-challenge="challenge3"
               />
-              <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                <svg
-                  class="w-5 h-5 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
             </div>
             <button
-              onclick="submitFlag('challenge6')"
-              class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white px-6 py-3 rounded-lg font-medium hover:from-green-500 hover:to-blue-600 transition duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+              onclick="checkCaseAnswer()"
+              class="w-full bg-gradient-to-r from-red-500 to-amber-500 text-white px-6 py-3 rounded-lg font-medium hover:from-red-600 hover:to-amber-600 transition duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
             >
-              Submit Flag
+              Submit Deduction
             </button>
 
-            <!-- Challenge Completion Message -->
+            <!-- Case Resolution -->
             <div id="completion-message" class="hidden mt-6">
-              <div
-                class="bg-green-400/10 border border-green-400 rounded-lg p-4"
-              >
+              <div class="bg-red-500/10 border border-red-500 rounded-lg p-4">
                 <div class="flex items-center space-x-3">
                   <svg
-                    class="w-6 h-6 text-green-400"
+                    class="w-6 h-6 text-red-500"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -220,12 +191,8 @@
                     />
                   </svg>
                   <div>
-                    <h4 class="text-green-400 font-bold">
-                      Challenge Completed!
-                    </h4>
-                    <p class="text-gray-300 text-sm">
-                      Great job decoding the Base64 message!
-                    </p>
+                    <h4 class="text-red-500 font-bold">Case Update</h4>
+                    <p class="text-gray-300 text-sm">Analyzing evidence...</p>
                   </div>
                 </div>
               </div>
@@ -234,19 +201,6 @@
         </div>
       </div>
     </main>
-
-    <script>
-      function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(() => {
-          showNotification(
-            "success",
-            "📋 Encoded message copied to clipboard!"
-          );
-        });
-      }
-    </script>
-    <script src="../js/notifications.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/challenge6.js"></script>
   </body>
+  <script src="js/challenge6.js"></script>
 </html>
