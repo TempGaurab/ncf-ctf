@@ -11,27 +11,27 @@
       // Math problems with dynamically calculated answers and hints
       const mathProblems = [
         {
-          question: "If a = 1, b = 2, What number is c?",
+          question: "If a = 1, b = 2, What number is C?",
           formula: "c = a + b",
           hint: "Think about the alphabet positions. If 'a' is 1 and 'b' is 2, what position would 'c' be?",
         },
         {
-          question: "What number is 'l'?",
+          question: "What number is 'L'?",
           formula: "l",
           hint: "Count through the alphabet: a=1, b=2, c=3... keep going until you reach 'l'",
         },
         {
-          question: "What number is 'a'?",
+          question: "What number is 'A'?",
           formula: "a",
           hint: "'a' is the first letter of the alphabet",
         },
         {
-          question: "What number is 'i'?",
+          question: "What number is 'I'?",
           formula: "i",
           hint: "Count through the alphabet: a=1, b=2, c=3... until you reach 'i'",
         },
         {
-          question: "What number is 'm'?",
+          question: "What number is 'M'?",
           formula: "m",
           hint: "m is in the middle of the alphabet. Count its position: a=1, b=2, c=3...",
         },

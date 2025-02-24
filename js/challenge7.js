@@ -27,11 +27,7 @@ document.addEventListener("keydown", (e) => {
       checkGuess();
     }
   } else if (e.key === "Backspace") {
-    if (currentCol > 0) {
-      currentCol--;
-      currentGuess.pop();
-      updateGrid();
-    }
+    removeLetter();
   } else if (e.key.match(/^[a-zA-Z]$/) && currentCol < GRID_COLS) {
     const key = e.key.toUpperCase();
     currentGuess.push(key);
@@ -39,6 +35,15 @@ document.addEventListener("keydown", (e) => {
     currentCol++;
   }
 });
+
+// Implement removeLetter function
+function removeLetter() {
+  if (currentCol > 0) {
+    currentCol--;
+    currentGuess.pop();
+    updateGrid();
+  }
+}
 
 function updateGrid() {
   const row = gameGrid.children;
@@ -113,9 +118,14 @@ function toggleHint() {
   hint.classList.toggle("hidden");
 }
 
+// Modified keyboard to include a delete button
 const alphabet = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
 
 const keyboardContainer = document.getElementById("keyboard");
+// Clear existing content
+keyboardContainer.innerHTML = "";
+
+// Add regular letter buttons
 alphabet.forEach((letter) => {
   const button = document.createElement("button");
   button.textContent = letter;
@@ -124,6 +134,14 @@ alphabet.forEach((letter) => {
   button.addEventListener("click", () => handleKeyPress(letter));
   keyboardContainer.appendChild(button);
 });
+
+// Add a delete button to the keyboard
+const deleteButton = document.createElement("button");
+deleteButton.textContent = "DEL";
+deleteButton.className =
+  "w-16 h-12 bg-red-700 text-white text-lg font-bold rounded focus:outline-none hover:bg-red-600 active:bg-red-500 transition-colors duration-300";
+deleteButton.addEventListener("click", removeLetter);
+keyboardContainer.appendChild(deleteButton);
 
 function handleKeyPress(letter) {
   if (gameOver || currentCol >= GRID_COLS) return;

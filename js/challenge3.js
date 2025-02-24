@@ -5,23 +5,23 @@ const questions = [
       hint: "A medium banana is about 7-8 inches long. Think about its natural sugar content!"
     },
     {
-      item: "Plain Bagel",
-      calories: 245,
+      item: "Plain Bagel (4-1/2' diameter)",
+      calories: 360,
       hint: "This is made primarily of refined flour. Consider its dense nature!"
     },
     {
       item: "Chicken Caesar Salad",
-      calories: 440,
+      calories: 400,
       hint: "Remember to consider the dressing, croutons, and parmesan cheese!"
     },
     {
       item: "Slice of Pepperoni Pizza",
-      calories: 285,
+      calories: 290,
       hint: "Consider the cheese, meat, and bread components."
     },
     {
-      item: "Chocolate Chip Cookie (large)",
-      calories: 180,
+      item: "Chocolate Chip Cookie (regular size)",
+      calories: 190,
       hint: "Think about the butter, sugar, and chocolate chips!"
     }
 ];

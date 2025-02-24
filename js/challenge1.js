@@ -9,19 +9,19 @@ const questions = [
         id: 2,
         question: "How many challenges are in this hunt! ",
         answer: "8",
-        hint: "It's one of Python's most popular plotting libraries."
+        hint: "More than 5 for sure!"
     },
     {
         id: 3,
-        question: "What is the first name of the president of the Data Science Club at NKU?",
-        answer: "Gaurab",
-        hint: "Baruag! the other way around!"
+        question: "What is the first name of the president of NKU?",
+        answer: "Cady",
+        hint: "ydac! the other way around!"
     },
     {
         id: 4,
         question: "How many E-Board members are there in this group!",
         answer: "5",
-        hint: "This is a single digit number less than 7 and more than 2."
+        hint: "This is a single digit number."
     }
 ];
 

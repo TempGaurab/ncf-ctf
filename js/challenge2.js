@@ -1,8 +1,8 @@
 const questions = [
     {
         id: 1,
-        question: "What is the phone number for NKU's Health, Counseling and Student Wellness center? (Format 859-ABC-ABCD)",
-        answer: "859-572-5650",
+        question: "What is the last 4 digits of the phone number for NKU's Health, Counseling and Student Wellness center? (Format 1234)",
+        answer: "5650",
         hint: "Check the NKU Health Services website or call the main campus number for assistance."
     },
     {
@@ -15,13 +15,13 @@ const questions = [
         id: 3,
         question: "How many free counseling sessions are available to NKU students per academic year?",
         answer: "10",
-        hint: "The number is between 10 and 15 sessions."
+        hint: "The number is between 5 and 15 sessions."
     },
     {
         id: 4,
         question: "How many dimensionsn of wellness is there?",
         answer: "10",
-        hint: "The number is between 10 and 15 as well."
+        hint: "The number is between 5 and 15 as well."
     }
 ];
 
